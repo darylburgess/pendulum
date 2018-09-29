@@ -19,7 +19,7 @@ const uint16_t BUTTON_RIGHT = 0x807F;
 const uint16_t BUTTON_CIRCLE = 0x20DF;
 
 //int RECV_PIN = 2;
-const int RECV_PIN = 14;
+const int RECV_PIN = 4;
 IRrecv irrecv(RECV_PIN);
 decode_results results;
 
