@@ -427,7 +427,8 @@ void loop() {
   if (irrecv.decode(&results)) 
   {
     /* read the RX'd IR into a 16-bit variable: */
-    uint16_t resultCode = (results.value & 0xFFFF);
+    uint916_t resultCode = (results.value & 0xFFFF);
+    Serial.println(resultCode);
 
     // This switch statement checks the received IR code against
     // all of the known codes. Each button press produces a 
