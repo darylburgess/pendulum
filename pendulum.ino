@@ -647,6 +647,9 @@ void loop() {
           case 2: //program B - guess position
             break;
           case 3: //program C - instructor mode
+              sprintf(trackname, "%s", "T00URRRGOGG\n");
+              Serial.println(trackname);
+              sfx.playTrack(trackname);
             break;
           case 4: //program select mode
 	    if (track > 0)
@@ -830,6 +833,9 @@ void loop() {
             }
             break;
           case 3: //program C - instructor mode
+              sprintf(trackname, "%s", "T00DINGGOGG\n");
+              Serial.println(trackname);
+              sfx.playTrack(trackname);
             break;
           case 4: //program select mode
             break;
