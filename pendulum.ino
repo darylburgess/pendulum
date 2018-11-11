@@ -203,7 +203,12 @@ void moveServoByNum(int position)
 void initB()
 {
   char trackname[20];
-  posnum = random(3, 9);
+  int newposnum = posnum;
+  while (newposnum == posnum)
+  {
+    newposnum = random(3, 9);
+  }
+  posnum = newposnum;
   Serial.print("I have chosen position ");
   Serial.print(posnum);
   Serial.println(" at random");
@@ -427,7 +432,7 @@ void loop() {
   if (irrecv.decode(&results)) 
   {
     /* read the RX'd IR into a 16-bit variable: */
-    uint916_t resultCode = (results.value & 0xFFFF);
+    uint16_t resultCode = (results.value & 0xFFFF);
     Serial.println(resultCode);
 
     // This switch statement checks the received IR code against
