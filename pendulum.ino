@@ -37,6 +37,17 @@ const uint16_t BUTTON_LEFT = 0x10EF;
 const uint16_t BUTTON_RIGHT = 0x807F;
 const uint16_t BUTTON_CIRCLE = 0x20DF;
 
+//New Remote Values
+const uint16_t NEW_POWER = 0x629D;
+const uint16_t NEW_A = 0x22DD;
+const uint16_t NEW_B = 0x02FD;
+const uint16_t NEW_C = 0xC23D;
+const uint16_t NEW_UP = 0x9867;
+const uint16_t NEW_DOWN = 0x38C7;
+const uint16_t NEW_LEFT = 0x30CF;
+const uint16_t NEW_RIGHT = 0x7A85;
+const uint16_t NEW_CIRCLE = 0x18E7;
+
 //int RECV_PIN = 2;
 const int RECV_PIN = 14;
 IRrecv irrecv(RECV_PIN);
@@ -421,9 +432,8 @@ void loop() {
     // This switch statement checks the received IR code against
     // all of the known codes. Each button press produces a 
     // serial output, and has an effect on the LED output.
-    switch (resultCode)
+    if ((resultCode == BUTTON_POWER) || (resultCode == NEW_POWER))
     {
-      case BUTTON_POWER:
         Serial.println("Power");
         //select which program
         Serial.println("Mode select enabled");
@@ -433,8 +443,9 @@ void loop() {
         sfx.playTrack(trackname);
         prevprogram = program;
         program = 4;
-        break;
-      case BUTTON_A:
+    }
+    if ((resultCode == BUTTON_A) || (resultCode == NEW_A))
+    {
         Serial.println("A");
         switch (program)
         {
@@ -464,8 +475,9 @@ void loop() {
             sfx.playTrack(trackname);
             break;
         }
-        break;
-      case BUTTON_B:
+    }
+    if ((resultCode == BUTTON_B) || (resultCode == NEW_B))
+    {
         Serial.println("B");
         switch (program)
         {
@@ -490,8 +502,9 @@ void loop() {
             initB();
             break;
         }
-        break;
-      case BUTTON_C:
+    }
+    if ((resultCode == BUTTON_C) || (resultCode == NEW_C))
+    {
         Serial.println("C");
         switch (program)
         {
@@ -514,8 +527,9 @@ void loop() {
             program = 3;
             break;
         }
-        break;
-      case BUTTON_UP:
+    }
+    if ((resultCode == BUTTON_UP) || (resultCode == NEW_UP))
+    {
         Serial.println("Up");
         switch (program)
         {
@@ -616,8 +630,9 @@ void loop() {
             }
             break;
         }
-        break;
-      case BUTTON_DOWN:
+    }
+    if ((resultCode == BUTTON_DOWN) || (resultCode == NEW_DOWN))
+    {
         Serial.println("Down");
         switch (program)
         {
@@ -638,8 +653,9 @@ void loop() {
             }
             break;
         }
-        break;
-      case BUTTON_LEFT:
+    }
+    if ((resultCode == BUTTON_LEFT) || (resultCode == NEW_LEFT))
+    {
         Serial.println("Left");
         switch (program)
         {
@@ -664,8 +680,9 @@ void loop() {
           case 4: //program select mode
             break;
         }
-        break;
-      case BUTTON_RIGHT:
+    }
+    if ((resultCode == BUTTON_RIGHT) || (resultCode == NEW_RIGHT))
+    {
         Serial.println("Right");
         switch (program)
         {
@@ -690,8 +707,9 @@ void loop() {
           case 4: //program select mode
             break;
         }
-        break;
-      case BUTTON_CIRCLE:
+    }
+    if ((resultCode == BUTTON_CIRCLE) || (resultCode == NEW_CIRCLE))
+    {
         Serial.println("Circle");
         switch (program)
         {
@@ -810,12 +828,7 @@ void loop() {
           case 4: //program select mode
             break;
         }
-        break;
-      default:
-        //Serial.print("Unrecognized code received: 0x");
-        //Serial.println(results.value, HEX);
-        break;        
-    }    
+    }
     irrecv.resume(); // Receive the next value
   }
   delay(100);
