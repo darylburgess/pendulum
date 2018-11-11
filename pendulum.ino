@@ -470,7 +470,7 @@ void loop() {
             sprintf(trackname, "%s", "T00PSELAOGG\n");
 	    Serial.println(trackname);
             sfx.playTrack(trackname);
-            delay(2000);
+            delay(3000);
             program = 1;
 	    pos = 90;
 	    posnum = 6;
@@ -502,7 +502,7 @@ void loop() {
             sprintf(trackname, "%s", "T00PSELBOGG\n");
 	    Serial.println(trackname);
             sfx.playTrack(trackname);
-            delay(2000);
+            delay(3000);
             program = 2;
             penlastmillis = millis();
             initB();
@@ -529,7 +529,7 @@ void loop() {
             sprintf(trackname, "%s", "T00PSELCOGG\n");
 	    Serial.println(trackname);
             sfx.playTrack(trackname);
-            delay(2000);
+            delay(3000);
             program = 3;
             break;
         }
